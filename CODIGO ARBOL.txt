@@ -1,0 +1,77 @@
+CODIGO ARBOL
+
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* izq;
+    Nodo* der;
+};
+
+Nodo* crearNodo(int numero) {
+    Nodo* nuevo = new Nodo();
+    nuevo->dato = numero;
+    nuevo->izq = NULL;
+    nuevo->der = NULL;
+    return nuevo;
+}
+
+void preorden(Nodo* nodo) {
+    if (nodo == NULL) return;
+
+    cout << nodo->dato << " ";
+    preorden(nodo->izq);
+    preorden(nodo->der);
+}
+
+void inorden(Nodo* nodo) {
+    if (nodo == NULL) return;
+
+    inorden(nodo->izq);
+    cout << nodo->dato << " ";
+    inorden(nodo->der);
+}
+
+void postorden(Nodo* nodo) {
+    if (nodo == NULL) return;
+
+    postorden(nodo->izq);
+    postorden(nodo->der);
+    cout << nodo->dato << " ";
+}
+
+int main() {
+    Nodo* raiz = crearNodo(10);
+    raiz->izq = crearNodo(5);
+    raiz->der = crearNodo(20);
+    raiz->izq->izq = crearNodo(3);
+
+    cout << "Preorden:  ";
+    preorden(raiz);
+    cout << endl;
+
+    cout << "Inorden:   ";
+    inorden(raiz);
+    cout << endl;
+
+    cout << "Postorden: ";
+    postorden(raiz);
+    cout << endl;
+
+    return 0;
+}
+
+
+ARBOL
+
+    10
+     /  \
+    5    20
+   /
+  3
+
+EJECUTAR
+Preorden:  10 5 3 20 
+Inorden:   3 5 10 20 
+Postorden: 3 5 20 10

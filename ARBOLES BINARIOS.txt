@@ -1,0 +1,39 @@
+ARBOLES BINARIOS
+
+1. ¿Qué es un Árbol General?
+En programación cuando se habla de un árbol es una forma de organizar datos que no van uno detrás de otro como lo son en una lista o un arreglo, sino en niveles o jerarquías, exactamente igual a un árbol genealógico o a las carpetas de tu computadora.
+* El dato de hasta arriba se llama Raíz, ese dato es el inicio de todo.
+* Los datos que cuelgan de otro se llaman Hijos.
+* El dato del que cuelgan se llama Padre.
+* Los datos que están hasta abajo y ya no tienen hijos se llaman Hojas.
+1. ¿Qué es un Árbol General?
+Es un árbol sin reglas de cantidad: cada nodo o sea cada bolita o dato puede tener todos los hijos que quiera hasta 100 como ejemplo
+Ejemplo de la vida real: Las carpetas de Windows. Dentro de la carpeta llamada Documentos puedes meter 15 subcarpetas, y dentro de una de ellas meter otras 3. No hay límite.
+
+¿Cómo se hace en C++?
+Como no sabemos cuántos hijos va a tener cada dato, usamos un vector esto significa una lista que crece sola, para guardar las direcciones de memoria llamados punteros de todos sus hijos:
+C++
+#include <vector>
+struct NodoGeneral {
+    int dato;                           (El valor que guardamos (ej. un número))
+    std::vector<NodoGeneral*> hijos;    ( Una lista para guardar 0, 1, 2 o muchos hijos)
+};
+
+
+
+
+2. ¿Qué es un Árbol Binario?
+Es un árbol con una regla estricta, cada nodo puede tener como máximo 2 hijos (puede tener 0, 1 o 2, pero nunca 3 o más).
+Además, aquí sí importa el orden, uno se llama hijo izquierdo y el otro hijo derecho.
+* Ejemplo de la vida real: Un torneo de eliminación directa como en el fútbol, donde cada partido se forma por máximo 2 equipos que vienen de llaves anteriores; o un árbol genealógico hacia atrás (tú tienes 2 padres biológicos, cada padre tiene 2 padres, etc.).
+
+¿Cómo se hace en C++?
+Como sabemos que máximo habrá 2 hijos, no necesitamos una lista (vector). Solo creamos dos variables (punteros) fijas: una para la izquierda y otra para la derecha:
+
+struct NodoBinario {
+    int dato;                   El valor que guardamos
+    NodoBinario* izquierda;     Apunta al único hijo de la izquierda (o nullptr si no hay)
+    NodoBinario* derecha;        Apunta al único hijo de la derecha (o nullptr si no hay)
+};
+
+
